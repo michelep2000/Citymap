@@ -7,18 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		032D7D9A2396C381002436A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 032D7D992396C381002436A4 /* GoogleService-Info.plist */; };
+		032D7D9D2397FFAA002436A4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032D7D9C2397FFAA002436A4 /* MapViewController.swift */; };
 		03A56E5623955B8400DF3B81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A56E5523955B8400DF3B81 /* AppDelegate.swift */; };
 		03A56E5823955B8400DF3B81 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A56E5723955B8400DF3B81 /* LoginViewController.swift */; };
 		03A56E5B23955B8400DF3B81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03A56E5923955B8400DF3B81 /* Main.storyboard */; };
 		03A56E5E23955B8400DF3B81 /* CityMap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03A56E5C23955B8400DF3B81 /* CityMap.xcdatamodeld */; };
 		03A56E6023955B8A00DF3B81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03A56E5F23955B8A00DF3B81 /* Assets.xcassets */; };
 		03A56E6323955B8A00DF3B81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03A56E6123955B8A00DF3B81 /* LaunchScreen.storyboard */; };
-		03BFB6B0239563BE002B8F75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03BFB6AF239563BE002B8F75 /* GoogleService-Info.plist */; };
 		03BFB6B323958144002B8F75 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BFB6B223958144002B8F75 /* SignUpViewController.swift */; };
 		DBE24A8042B08733D745D0B1 /* Pods_CityMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7EE66DF8EAD9CD34730ECA2 /* Pods_CityMap.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		032D7D992396C381002436A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		032D7D9C2397FFAA002436A4 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		03A56E5223955B8400DF3B81 /* CityMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03A56E5523955B8400DF3B81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03A56E5723955B8400DF3B81 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -27,7 +30,6 @@
 		03A56E5F23955B8A00DF3B81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03A56E6223955B8A00DF3B81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03A56E6423955B8A00DF3B81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		03BFB6AF239563BE002B8F75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Firebase_IOS/Firebase_IOS/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		03BFB6B223958144002B8F75 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		49F9A84D40236FA0F38CB5CF /* Pods-CityMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-CityMap/Pods-CityMap.release.xcconfig"; sourceTree = "<group>"; };
 		7592B3CE85D207C62A936EB0 /* Pods-CityMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CityMap/Pods-CityMap.debug.xcconfig"; sourceTree = "<group>"; };
@@ -46,6 +48,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		032D7D9B2397FF91002436A4 /* map */ = {
+			isa = PBXGroup;
+			children = (
+				032D7D9C2397FFAA002436A4 /* MapViewController.swift */,
+			);
+			path = map;
+			sourceTree = "<group>";
+		};
 		03A56E4923955B8400DF3B81 = {
 			isa = PBXGroup;
 			children = (
@@ -67,8 +77,8 @@
 		03A56E5423955B8400DF3B81 /* CityMap */ = {
 			isa = PBXGroup;
 			children = (
+				032D7D992396C381002436A4 /* GoogleService-Info.plist */,
 				03A56E5923955B8400DF3B81 /* Main.storyboard */,
-				03BFB6AF239563BE002B8F75 /* GoogleService-Info.plist */,
 				03A56E6A23955EBE00DF3B81 /* features */,
 				03A56E5523955B8400DF3B81 /* AppDelegate.swift */,
 				03A56E5F23955B8A00DF3B81 /* Assets.xcassets */,
@@ -82,6 +92,7 @@
 		03A56E6A23955EBE00DF3B81 /* features */ = {
 			isa = PBXGroup;
 			children = (
+				032D7D9B2397FF91002436A4 /* map */,
 				03BFB6B1239580EE002B8F75 /* register */,
 				03A56E6B23955EE200DF3B81 /* login */,
 			);
@@ -183,7 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03A56E6323955B8A00DF3B81 /* LaunchScreen.storyboard in Resources */,
-				03BFB6B0239563BE002B8F75 /* GoogleService-Info.plist in Resources */,
+				032D7D9A2396C381002436A4 /* GoogleService-Info.plist in Resources */,
 				03A56E6023955B8A00DF3B81 /* Assets.xcassets in Resources */,
 				03A56E5B23955B8400DF3B81 /* Main.storyboard in Resources */,
 			);
@@ -217,18 +228,28 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CityMap/Pods-CityMap-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,12 +264,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CityMap/Pods-CityMap-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +285,7 @@
 				03A56E5E23955B8400DF3B81 /* CityMap.xcdatamodeld in Sources */,
 				03A56E5823955B8400DF3B81 /* LoginViewController.swift in Sources */,
 				03BFB6B323958144002B8F75 /* SignUpViewController.swift in Sources */,
+				032D7D9D2397FFAA002436A4 /* MapViewController.swift in Sources */,
 				03A56E5623955B8400DF3B81 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

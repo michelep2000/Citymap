@@ -10,5 +10,7 @@ target 'CityMap' do
   pod 'Firebase/Auth'
   pod 'Firebase', '~> 6.1.0'
   pod 'GoogleSignIn', '~> 4.1.0'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
 
 end

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -203,32 +204,30 @@
             </objects>
             <point key="canvasLocation" x="1143" y="35"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="YUw-Ln-0Eh">
             <objects>
-                <viewController id="LMN-E9-Ngo" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="map_screen" id="LMN-E9-Ngo" customClass="MapViewController" customModule="CityMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JBE-Rb-A3L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're sign in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbE-Hb-LMc">
-                                <rect key="frame" x="136.66666666666666" y="400.66666666666669" width="102" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="2bY-Wl-1Uf"/>
-                                    <constraint firstAttribute="width" constant="102" id="4Mp-fR-Qde"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3ZR-y3-EBM">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wbE-Hb-LMc" firstAttribute="centerY" secondItem="qRX-bK-szm" secondAttribute="centerY" id="fWy-1m-cPJ"/>
-                            <constraint firstItem="wbE-Hb-LMc" firstAttribute="centerX" secondItem="qRX-bK-szm" secondAttribute="centerX" id="sSb-tu-Z17"/>
+                            <constraint firstItem="3ZR-y3-EBM" firstAttribute="leading" secondItem="qRX-bK-szm" secondAttribute="leading" id="D5I-4j-vc9"/>
+                            <constraint firstItem="qRX-bK-szm" firstAttribute="trailing" secondItem="3ZR-y3-EBM" secondAttribute="trailing" id="lkm-F5-zA1"/>
+                            <constraint firstItem="3ZR-y3-EBM" firstAttribute="top" secondItem="qRX-bK-szm" secondAttribute="top" id="s25-ZI-2N5"/>
+                            <constraint firstItem="qRX-bK-szm" firstAttribute="bottom" secondItem="3ZR-y3-EBM" secondAttribute="bottom" id="tbW-iw-y8N"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qRX-bK-szm"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="3ZR-y3-EBM" id="YB0-mL-Ef7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F5N-Iz-Jo6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
