@@ -8,18 +8,45 @@
 
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, GIDSignInUIDelegate {
 
+  
+    @IBOutlet weak var emailTxtField: UITextField!
+    @IBOutlet weak var passwordTxtField: UITextField!
+    
+    @IBOutlet weak var btnGoogleSignIn: GIDSignInButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        GIDSignIn.sharedInstance()?.uiDelegate = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func signInTapped(_ sender: Any) {
+        
+        guard let usr = emailTxtField.text,
+            let pwd = passwordTxtField.text
+        else {
+                return
+        }
+        Auth.auth().signIn(withEmail: usr, password: pwd){ [weak self] authResult,
+            error in
+            if (error == nil) {
+                self?.openMapScreen()
+            } else {
+                print("Error creating user: \(String(describing: error))")
+            }
+            
+        }
     }
+    
+    func openMapScreen(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "map_screen")
+        self.present(controller, animated: true, completion: nil)
+    }
+
     
     
 }

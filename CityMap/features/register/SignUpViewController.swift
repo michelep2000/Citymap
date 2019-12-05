@@ -14,7 +14,7 @@ import FirebaseCore
 
 class SignUpViewController: UIViewController {
     
-    var uid: String = ""
+    var uid: String?
     
     @IBOutlet weak var nameTxtField: UITextField!
     @IBOutlet weak var surnameTxtField: UITextField!
@@ -23,7 +23,6 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,8 +43,9 @@ class SignUpViewController: UIViewController {
             if error == nil{
                 guard let uid = Auth.auth().currentUser?.uid else { return }
                 self.createCollection(uid: uid, name: name, surname: surname, mail: usr)
-                self.openMapScreen()
+                //self.openMapScreen()
             } else {
+                self.openMapScreen()
                 print("Error creating user: \(String(describing: error))")
             }
             

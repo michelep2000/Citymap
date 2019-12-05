@@ -56,7 +56,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="LMN-E9-Ngo" kind="show" id="3yh-wM-iwG"/>
+                                            <action selector="signInTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7nR-gz-80O"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mlY-Ku-7l0">
@@ -86,14 +86,29 @@
                                     <constraint firstAttribute="height" constant="357" id="qYV-1Q-DOR"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0AX-Ak-wYg" customClass="GIDSignInButton">
+                                <rect key="frame" x="53" y="621.66666666666663" width="268.33333333333331" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="268.32999999999998" id="OIL-M5-mJa"/>
+                                    <constraint firstAttribute="height" constant="30" id="bLI-2G-TKC"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ShT-n0-5zP" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="6mq-Xv-8C4"/>
+                            <constraint firstItem="0AX-Ak-wYg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="O3h-VZ-qKl"/>
+                            <constraint firstItem="0AX-Ak-wYg" firstAttribute="top" secondItem="ShT-n0-5zP" secondAttribute="bottom" constant="32" id="Px1-0d-sxa"/>
                             <constraint firstItem="ShT-n0-5zP" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gKw-1U-2bI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="btnGoogleSignIn" destination="0AX-Ak-wYg" id="MMU-Vj-lKE"/>
+                        <outlet property="emailTxtField" destination="T2n-Vw-wep" id="eBp-gS-Ps4"/>
+                        <outlet property="passwordTxtField" destination="KXb-fo-ICI" id="q6J-G7-ibC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -213,29 +228,67 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3ZR-y3-EBM">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="90" width="375" height="688"/>
                             </mapView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="kpV-Oe-PaA">
+                                <rect key="frame" x="167" y="394.33333333333331" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ZHh-2W-AQ0"/>
+                                    <constraint firstAttribute="width" constant="40" id="a1W-rs-UYa"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ee-qv-Idh">
+                                <rect key="frame" x="39" y="52" width="297" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="btv-Ef-9aW">
+                                        <rect key="frame" x="0.0" y="0.0" width="267" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="267" id="Hqe-7W-tNm"/>
+                                            <constraint firstAttribute="height" constant="30" id="pgw-Fi-NZ7"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0PM-af-1gj">
+                                        <rect key="frame" x="267" y="0.0" width="30" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="GO">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goButtonTapped:" destination="LMN-E9-Ngo" eventType="touchUpInside" id="Fpy-Cc-4Iq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3ZR-y3-EBM" firstAttribute="leading" secondItem="qRX-bK-szm" secondAttribute="leading" id="D5I-4j-vc9"/>
+                            <constraint firstItem="8Ee-qv-Idh" firstAttribute="centerX" secondItem="qRX-bK-szm" secondAttribute="centerX" id="QB7-g8-EsH"/>
+                            <constraint firstItem="kpV-Oe-PaA" firstAttribute="centerY" secondItem="3ZR-y3-EBM" secondAttribute="centerY" constant="-20" id="g6x-Y1-8xv"/>
+                            <constraint firstItem="3ZR-y3-EBM" firstAttribute="top" secondItem="8Ee-qv-Idh" secondAttribute="bottom" constant="8" id="j4z-Eu-INQ"/>
                             <constraint firstItem="qRX-bK-szm" firstAttribute="trailing" secondItem="3ZR-y3-EBM" secondAttribute="trailing" id="lkm-F5-zA1"/>
-                            <constraint firstItem="3ZR-y3-EBM" firstAttribute="top" secondItem="qRX-bK-szm" secondAttribute="top" id="s25-ZI-2N5"/>
+                            <constraint firstItem="8Ee-qv-Idh" firstAttribute="top" secondItem="qRX-bK-szm" secondAttribute="top" constant="8" id="t8c-Qd-W8C"/>
                             <constraint firstItem="qRX-bK-szm" firstAttribute="bottom" secondItem="3ZR-y3-EBM" secondAttribute="bottom" id="tbW-iw-y8N"/>
+                            <constraint firstItem="kpV-Oe-PaA" firstAttribute="centerX" secondItem="3ZR-y3-EBM" secondAttribute="centerX" id="ytq-KE-AJQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qRX-bK-szm"/>
                     </view>
                     <connections>
+                        <outlet property="addressField" destination="btv-Ef-9aW" id="ePc-IK-E9U"/>
                         <outlet property="mapView" destination="3ZR-y3-EBM" id="YB0-mL-Ef7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F5N-Iz-Jo6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="588" y="789"/>
+            <point key="canvasLocation" x="588" y="788.42364532019712"/>
         </scene>
     </scenes>
     <resources>
         <image name="icon_back" width="64" height="64"/>
         <image name="image_login" width="512" height="512"/>
+        <image name="pin" width="64" height="64"/>
     </resources>
 </document>

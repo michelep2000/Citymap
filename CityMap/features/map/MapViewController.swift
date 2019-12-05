@@ -13,9 +13,11 @@ import CoreLocation
 class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var addressField: UITextField!
     
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 0.05
+    var previousLocation: CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,9 +54,7 @@ class MapViewController: UIViewController {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
             //do map stuff
-            mapView.showsUserLocation = true
-            centerViewUserLocation()
-            locationManager.startUpdatingLocation()
+            startTrackingUserLocation()
             break
         case .denied:
             //alert instructing them how to turn on permissions
@@ -68,6 +68,72 @@ class MapViewController: UIViewController {
         case .authorizedAlways:
             break
         }
+    }
+    
+    func startTrackingUserLocation(){
+        mapView.showsUserLocation = true
+        centerViewUserLocation()
+        locationManager.startUpdatingLocation()
+
+    }
+    
+    func getLocation() -> CLLocation {
+        var latitude: CLLocationDegrees?
+        var longitude: CLLocationDegrees?
+        let geoCoder = CLGeocoder()
+        print("----------1111--------")
+        
+        let address = "London, England"
+        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+            guard
+                let placemarks = placemarks,
+                let location = placemarks.first?.location
+                else {
+                    // handle no location found
+                    return
+            }
+            latitude = location.coordinate.latitude
+            longitude = location.coordinate.longitude
+            print("0----------\(longitude)--------\(latitude)---------0")
+            }
+        
+        return CLLocation(latitude: latitude!, longitude: longitude!)
+    }
+    
+    func getDirection(){
+        
+        guard  let location = locationManager.location?.coordinate else { return }
+            let request = self.createDirectionRequest(from: location)
+            let directions = MKDirections(request: request)
+            
+            directions.calculate{ [unowned self] (response, error) in
+                guard let respose = response else { return }
+                
+                for route in (response?.routes)! {
+                    self.mapView.add(route.polyline)
+                    self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                }
+            }
+        }
+    
+    
+    func createDirectionRequest(from location: CLLocationCoordinate2D) -> MKDirectionsRequest{
+        
+        let destinationCoordinate = getLocation().coordinate
+        print("PASO getLocation")
+        let startingLocation = MKPlacemark(coordinate: location)
+        let destination = MKPlacemark(coordinate: destinationCoordinate)
+        let request = MKDirectionsRequest()
+        request.source = MKMapItem(placemark: startingLocation)
+        request.destination = MKMapItem(placemark: destination)
+        request.transportType = .automobile
+        request.requestsAlternateRoutes = true
+        
+        return request
+    }
+    @IBAction func goButtonTapped(_ sender: Any) {
+        getDirection()
+        print("--------------------------------------------")
     }
     
 }
@@ -85,5 +151,14 @@ extension MapViewController: CLLocationManagerDelegate{
         checkLocationAuthorization()
     }
     
+}
+
+extension MapViewController: MKMapViewDelegate{
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
+        renderer.strokeColor = .blue
+
+        return renderer
+    }
 }
 
