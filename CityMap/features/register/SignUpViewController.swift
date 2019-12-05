@@ -48,11 +48,10 @@ class SignUpViewController: UIViewController {
                 self.openMapScreen()
                 print("Error creating user: \(String(describing: error))")
             }
-            
-            
-        }
         
         }
+        
+    }
     
     func createCollection(uid: String?, name: String, surname: String, mail: String){
         

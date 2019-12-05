@@ -219,24 +219,52 @@
             </objects>
             <point key="canvasLocation" x="1143" y="35"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Perfil-->
+        <scene sceneID="seY-45-XEY">
+            <objects>
+                <viewController id="hbY-oD-bwN" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bIm-Wh-oJX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ZgM-Ul-Xlm"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Perfil" id="oQt-bK-CWk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bOB-1h-fvd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23" y="1348"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="qDS-Eg-2YY">
+            <objects>
+                <tabBarController id="N7s-nx-MkE" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MYW-dU-QRv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="hbY-oD-bwN" kind="relationship" relationship="viewControllers" id="RFQ-EI-ErO"/>
+                        <segue destination="LMN-E9-Ngo" kind="show" id="QcJ-J1-fpb"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yve-pP-Bh0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-977" y="1020"/>
+        </scene>
+        <!--Map-->
         <scene sceneID="YUw-Ln-0Eh">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F5N-Iz-Jo6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="map_screen" id="LMN-E9-Ngo" customClass="MapViewController" customModule="CityMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JBE-Rb-A3L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3ZR-y3-EBM">
-                                <rect key="frame" x="0.0" y="90" width="375" height="688"/>
+                                <rect key="frame" x="0.0" y="90" width="375" height="639"/>
                             </mapView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="kpV-Oe-PaA">
-                                <rect key="frame" x="167" y="394.33333333333331" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="ZHh-2W-AQ0"/>
-                                    <constraint firstAttribute="width" constant="40" id="a1W-rs-UYa"/>
-                                </constraints>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ee-qv-Idh">
                                 <rect key="frame" x="39" y="52" width="297" height="30"/>
                                 <subviews>
@@ -267,28 +295,26 @@
                         <constraints>
                             <constraint firstItem="3ZR-y3-EBM" firstAttribute="leading" secondItem="qRX-bK-szm" secondAttribute="leading" id="D5I-4j-vc9"/>
                             <constraint firstItem="8Ee-qv-Idh" firstAttribute="centerX" secondItem="qRX-bK-szm" secondAttribute="centerX" id="QB7-g8-EsH"/>
-                            <constraint firstItem="kpV-Oe-PaA" firstAttribute="centerY" secondItem="3ZR-y3-EBM" secondAttribute="centerY" constant="-20" id="g6x-Y1-8xv"/>
                             <constraint firstItem="3ZR-y3-EBM" firstAttribute="top" secondItem="8Ee-qv-Idh" secondAttribute="bottom" constant="8" id="j4z-Eu-INQ"/>
                             <constraint firstItem="qRX-bK-szm" firstAttribute="trailing" secondItem="3ZR-y3-EBM" secondAttribute="trailing" id="lkm-F5-zA1"/>
                             <constraint firstItem="8Ee-qv-Idh" firstAttribute="top" secondItem="qRX-bK-szm" secondAttribute="top" constant="8" id="t8c-Qd-W8C"/>
                             <constraint firstItem="qRX-bK-szm" firstAttribute="bottom" secondItem="3ZR-y3-EBM" secondAttribute="bottom" id="tbW-iw-y8N"/>
-                            <constraint firstItem="kpV-Oe-PaA" firstAttribute="centerX" secondItem="3ZR-y3-EBM" secondAttribute="centerX" id="ytq-KE-AJQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qRX-bK-szm"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Map" id="cNy-BX-hRu"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addressField" destination="btv-Ef-9aW" id="ePc-IK-E9U"/>
                         <outlet property="mapView" destination="3ZR-y3-EBM" id="YB0-mL-Ef7"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F5N-Iz-Jo6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="588" y="788.42364532019712"/>
+            <point key="canvasLocation" x="-23" y="700"/>
         </scene>
     </scenes>
     <resources>
         <image name="icon_back" width="64" height="64"/>
         <image name="image_login" width="512" height="512"/>
-        <image name="pin" width="64" height="64"/>
     </resources>
 </document>

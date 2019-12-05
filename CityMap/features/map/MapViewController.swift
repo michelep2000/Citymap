@@ -18,9 +18,11 @@ class MapViewController: UIViewController {
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 0.05
     var previousLocation: CLLocation?
+    var location: CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         checkLocationServices()
         
     }
@@ -77,52 +79,67 @@ class MapViewController: UIViewController {
 
     }
     
-    func getLocation() -> CLLocation {
-        var latitude: CLLocationDegrees?
-        var longitude: CLLocationDegrees?
-        let geoCoder = CLGeocoder()
-        print("----------1111--------")
+    func getLocation() {
         
-        let address = "London, England"
-        geoCoder.geocodeAddressString(address) { (placemarks, error) in
-            guard
-                let placemarks = placemarks,
-                let location = placemarks.first?.location
-                else {
-                    // handle no location found
-                    return
-            }
-            latitude = location.coordinate.latitude
-            longitude = location.coordinate.longitude
-            print("0----------\(longitude)--------\(latitude)---------0")
-            }
+        let searchRequest = MKLocalSearchRequest()
+        searchRequest.naturalLanguageQuery = addressField.text
         
-        return CLLocation(latitude: latitude!, longitude: longitude!)
+        let activeSearch = MKLocalSearch(request: searchRequest)
+        
+        activeSearch.start{ (response, error) in
+            
+            if response == nil{
+                print("ERROR")
+            }else{
+                let annotations = self.mapView.annotations
+                self.mapView.removeAnnotations(annotations)
+                let latitude = response?.boundingRegion.center.latitude
+                let longitude = response?.boundingRegion.center.longitude
+                self.location = CLLocation(latitude: latitude!, longitude: longitude!)
+                let annotation = MKPointAnnotation()
+                annotation.title = self.addressField.text
+                annotation.coordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
+                self.mapView.addAnnotation(annotation)
+                
+                //Zooming in on annotation
+                let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
+                let span = MKCoordinateSpanMake(0.1, 0.1)
+                let region = MKCoordinateRegionMake(coordinate, span)
+                self.mapView.setRegion(region, animated: true)
+                self.getDirection()
+                print("COMPLETADO")
+            }
+        }
+        
+        
     }
     
     func getDirection(){
-        
         guard  let location = locationManager.location?.coordinate else { return }
-            let request = self.createDirectionRequest(from: location)
-            let directions = MKDirections(request: request)
+        let request = self.createDirectionRequest(from: location)
+        let directions = MKDirections(request: request)
+        resetMapView(withNew: directions)
             
-            directions.calculate{ [unowned self] (response, error) in
-                guard let respose = response else { return }
+        directions.calculate{ [unowned self] (response, error) in
+            guard let respose = response else { return }
                 
-                for route in (response?.routes)! {
-                    self.mapView.add(route.polyline)
-                    self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
-                }
+            for route in (response?.routes)! {
+                self.mapView.add(route.polyline)
+                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
             }
         }
+    }
+    
+    func resetMapView(withNew directions: MKDirections){
+        mapView.removeOverlays(mapView.overlays)
+    }
     
     
     func createDirectionRequest(from location: CLLocationCoordinate2D) -> MKDirectionsRequest{
         
-        let destinationCoordinate = getLocation().coordinate
-        print("PASO getLocation")
+        let destinationCoordinate = self.location?.coordinate
         let startingLocation = MKPlacemark(coordinate: location)
-        let destination = MKPlacemark(coordinate: destinationCoordinate)
+        let destination = MKPlacemark(coordinate: destinationCoordinate!)
         let request = MKDirectionsRequest()
         request.source = MKMapItem(placemark: startingLocation)
         request.destination = MKMapItem(placemark: destination)
@@ -132,8 +149,10 @@ class MapViewController: UIViewController {
         return request
     }
     @IBAction func goButtonTapped(_ sender: Any) {
-        getDirection()
-        print("--------------------------------------------")
+        if addressField.text != "" {
+            getLocation()
+        }
+        
     }
     
 }
