@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import GoogleSignIn
 
+
 class LoginViewController: UIViewController, GIDSignInUIDelegate {
 
   
@@ -50,7 +51,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     
     func openMapScreen(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "map_screen")
+        let controller = storyboard.instantiateViewController(withIdentifier: "tabBar")
         self.present(controller, animated: true, completion: nil)
     }
 

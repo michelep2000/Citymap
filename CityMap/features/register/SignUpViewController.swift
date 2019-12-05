@@ -11,6 +11,11 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseCore
+import CoreData
+
+protocol ProfileDataDelegate {
+    func setUserLocalData(name: String?, surname: String?, mail: String?)
+}
 
 class SignUpViewController: UIViewController {
     
@@ -20,9 +25,17 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var surnameTxtField: UITextField!
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var passwordTxtField: UITextField!
+   
+    var appDelegate: AppDelegate?
+    var context: NSManagedObjectContext?
+    var delegate: ProfileDataDelegate?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        appDelegate = UIApplication.shared.delegate as? AppDelegate
+        context = appDelegate?.persistentContainer.viewContext
+        self.delegate = ProfileViewController() as! ProfileDataDelegate
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,9 +56,8 @@ class SignUpViewController: UIViewController {
             if error == nil{
                 guard let uid = Auth.auth().currentUser?.uid else { return }
                 self.createCollection(uid: uid, name: name, surname: surname, mail: usr)
-                //self.openMapScreen()
-            } else {
                 self.openMapScreen()
+            } else {
                 print("Error creating user: \(String(describing: error))")
             }
         
@@ -60,13 +72,52 @@ class SignUpViewController: UIViewController {
                 print("Error writing document: \(err)")
             }
         }
-            
+        //lo comento por un error no resuelto
+        //insertUserLocal(name: name, surname: surname, mail: mail)
+    }
+    
+    func insertUserLocal(name: String, surname: String, mail: String){
+        let entity = NSEntityDescription.entity(forEntityName: "User", in: context!)
+        let newUser = NSManagedObject(entity: entity!, insertInto: context!)
+        newUser.setValue(name, forKey: "name")
+        newUser.setValue(surname, forKey: "surname")
+        newUser.setValue(mail, forKey: "email")
+        do {
+            try context?.save()
+            sendLocalUserData()
+            print("*****************DONE********************")
+        } catch {
+            print("Failed saving")
+        }
+        
+    }
+    
+    func sendLocalUserData(){
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context?.fetch(request)
+            for data in result as! [NSManagedObject] {
+                let name = data.value(forKey: "name") as? String
+                let surname = data.value(forKey: "surname") as? String
+                let email = data.value(forKey: "email") as? String
+                DispatchQueue.main.async {
+                    self.delegate?.setUserLocalData(name: name, surname: surname, mail: email)
+                }
+               
         }
     
+        } catch {
+        print("Failed")
+        }
+}
+
     
     func openMapScreen(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "map_screen")
+        let controller = storyboard.instantiateViewController(withIdentifier: "tabBar")
         self.present(controller, animated: true, completion: nil)
     }
+    
+    
 }

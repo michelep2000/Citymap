@@ -77,10 +77,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate  {
                 // ...
                 return
             }
-            print("you're in")
+            self.openMapScreen()
             // ...
         }
         // ...
+    }
+    func openMapScreen(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "login_screen")
+        self.window?.rootViewController = controller
     }
 
     // MARK: - Core Data stack

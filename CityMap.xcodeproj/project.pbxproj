@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		032D7D9A2396C381002436A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 032D7D992396C381002436A4 /* GoogleService-Info.plist */; };
 		032D7D9D2397FFAA002436A4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032D7D9C2397FFAA002436A4 /* MapViewController.swift */; };
+		03A2A9DC23993CC9004DB65A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A2A9DB23993CC9004DB65A /* ProfileViewController.swift */; };
 		03A56E5623955B8400DF3B81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A56E5523955B8400DF3B81 /* AppDelegate.swift */; };
 		03A56E5823955B8400DF3B81 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A56E5723955B8400DF3B81 /* LoginViewController.swift */; };
 		03A56E5B23955B8400DF3B81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03A56E5923955B8400DF3B81 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		032D7D992396C381002436A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		032D7D9C2397FFAA002436A4 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		03A2A9DB23993CC9004DB65A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		03A56E5223955B8400DF3B81 /* CityMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03A56E5523955B8400DF3B81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03A56E5723955B8400DF3B81 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +56,21 @@
 				032D7D9C2397FFAA002436A4 /* MapViewController.swift */,
 			);
 			path = map;
+			sourceTree = "<group>";
+		};
+		03A2A9DA23993C69004DB65A /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				03A2A9DB23993CC9004DB65A /* ProfileViewController.swift */,
+			);
+			path = profile;
+			sourceTree = "<group>";
+		};
+		03A2A9DF23994D28004DB65A /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		03A56E4923955B8400DF3B81 = {
@@ -92,6 +109,8 @@
 		03A56E6A23955EBE00DF3B81 /* features */ = {
 			isa = PBXGroup;
 			children = (
+				03A2A9DF23994D28004DB65A /* model */,
+				03A2A9DA23993C69004DB65A /* profile */,
 				032D7D9B2397FF91002436A4 /* map */,
 				03BFB6B1239580EE002B8F75 /* register */,
 				03A56E6B23955EE200DF3B81 /* login */,
@@ -282,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03A2A9DC23993CC9004DB65A /* ProfileViewController.swift in Sources */,
 				03A56E5E23955B8400DF3B81 /* CityMap.xcdatamodeld in Sources */,
 				03A56E5823955B8400DF3B81 /* LoginViewController.swift in Sources */,
 				03BFB6B323958144002B8F75 /* SignUpViewController.swift in Sources */,
